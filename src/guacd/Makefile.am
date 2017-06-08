@@ -54,8 +54,11 @@ guacd_CFLAGS =              \
 
 guacd_LDADD =        \
     @COMMON_LTLIB@   \
-    @LIBGUAC_LTLIB@ \
-    @PTHREAD_LIBS@  \
+    @LIBGUACD_LTLIB@ \
+    @LIBGUAC_LTLIB@
+
+guacd_LDFLAGS =    \
+    @PTHREAD_LIBS@ \
     @SSL_LIBS@
 
 EXTRA_DIST =         \
@@ -74,4 +77,3 @@ init.d/guacd: init.d/guacd.in
 	sed -e 's,[@]sbindir[@],$(sbindir),g' < init.d/guacd.in > init.d/guacd
 	chmod +x init.d/guacd
 endif
-
