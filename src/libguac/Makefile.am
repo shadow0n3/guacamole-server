@@ -104,8 +104,8 @@ libguac_la_CFLAGS = \
     -Wall -Iguacamole
 
 libguac_la_LDFLAGS =     \
-    -version-info 13:0:1 \
-
+    -version-info 13:0:1 
+    
 libguac_la_LIBADD = \
     @LIBADD_DLOPEN@ \
     @CAIRO_LIBS@    \
