@@ -47,20 +47,21 @@ noinst_HEADERS =      \
     vnc.h
 
 libguac_client_vnc_la_CFLAGS =        \
-    -Werror -Wall -pedantic -Iinclude \
+    -Wall -Iinclude \
     @COMMON_INCLUDE@                  \
     @COMMON_SSH_INCLUDE@              \
     @LIBGUAC_INCLUDE@                 \
     @PULSE_INCLUDE@
 
 libguac_client_vnc_la_LDFLAGS = \
-    -version-info 0:0:0         \
-    @CAIRO_LIBS@                \
-    @VNC_LIBS@ 
+    -version-info 0:0:0
 
 libguac_client_vnc_la_LIBADD = \
     @COMMON_LTLIB@             \
-    @LIBGUAC_LTLIB@
+    @LIBGUAC_LTLIB@            \
+    @CAIRO_LIBS@               \
+    @PULSE_LIBS@               \
+    @VNC_LIBS@
 
 # Optional SFTP support
 if ENABLE_COMMON_SSH
