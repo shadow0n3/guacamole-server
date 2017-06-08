@@ -49,7 +49,7 @@ test_libguac_SOURCES =           \
     util/guac_unicode.c
 
 test_libguac_CFLAGS =       \
-    -Werror -Wall -pedantic \
+    -Wall \
     @COMMON_INCLUDE@        \
     @LIBGUAC_INCLUDE@
 
