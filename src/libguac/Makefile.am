@@ -101,17 +101,17 @@ endif
 
 
 libguac_la_CFLAGS = \
-    -Werror -Wall -pedantic -Iguacamole
+    -Wall -Iguacamole
 
 libguac_la_LDFLAGS =     \
     -version-info 13:0:1 \
-    @CAIRO_LIBS@         \
-    @JPEG_LIBS@          \
-    @PNG_LIBS@           \
-    @PTHREAD_LIBS@       \
-    @UUID_LIBS@          \
-    @VORBIS_LIBS@        \
-    @WEBP_LIBS@
 
 libguac_la_LIBADD = \
-    @LIBADD_DLOPEN@ 
+    @LIBADD_DLOPEN@ \
+    @CAIRO_LIBS@    \
+    @JPEG_LIBS@     \
+    @PNG_LIBS@      \
+    @PTHREAD_LIBS@  \
+    @UUID_LIBS@     \
+    @VORBIS_LIBS@   \
+    @WEBP_LIBS@
