@@ -47,18 +47,15 @@ guacd_SOURCES =  \
     proc-map.c
 
 guacd_CFLAGS =              \
-    -Werror -Wall -pedantic \
+    -Wall \
     @COMMON_INCLUDE@        \
     @LIBGUACD_INCLUDE@      \
     @LIBGUAC_INCLUDE@
 
 guacd_LDADD =        \
     @COMMON_LTLIB@   \
-    @LIBGUACD_LTLIB@ \
-    @LIBGUAC_LTLIB@
-
-guacd_LDFLAGS =    \
-    @PTHREAD_LIBS@ \
+    @LIBGUAC_LTLIB@ \
+    @PTHREAD_LIBS@  \
     @SSL_LIBS@
 
 EXTRA_DIST =         \
