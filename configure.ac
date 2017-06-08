@@ -19,7 +19,7 @@
 
 AC_PREREQ([2.61])
 AC_INIT([guacamole-server], [0.9.12-incubating])
-AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
+AM_INIT_AUTOMAKE([-Wall foreign subdir-objects])
 AM_SILENT_RULES([yes])
 
 LT_PREREQ([2.2])
@@ -62,6 +62,12 @@ AC_CHECK_LIB([cairo], [cairo_create], [CAIRO_LIBS=-lcairo],
 AC_CHECK_LIB([pthread], [pthread_create], [PTHREAD_LIBS=-lpthread
               AC_DEFINE([HAVE_LIBPTHREAD],,
                         [Whether libpthread was found])])
+			
+# dlopen
+LIBADD_DLOPEN=
+AC_SEARCH_LIBS([dlopen], [dl], [LIBADD_DLOPEN=$ac_cv_search_dlopen],
+               [AC_MSG_ERROR([libguac requires dlopen()])])
+
 
 # OSSP UUID
 AC_CHECK_LIB([ossp-uuid], [uuid_make], [UUID_LIBS=-lossp-uuid],
@@ -497,9 +503,9 @@ then
 
     # libfreerdp-core / libfreerdp
     AC_CHECK_LIB([freerdp-core], [freerdp_new],
-                 [RDP_LIBS="$RDP_LIBS -lfreerdp-core"],
+                 [RDP_LIBS="$RDP_LIBS -lfreerdp-core -lfreerdp-common -lfreerdp-client -lwinpr-utils"],
                  [AC_CHECK_LIB([freerdp], [freerdp_new],
-                               [RDP_LIBS="$RDP_LIBS -lfreerdp -lfreerdp-client"],
+                               [RDP_LIBS="$RDP_LIBS -lfreerdp -lfreerdp-common -lfreerdp-client -lwinpr-utils"],
                                [AC_MSG_WARN([
   --------------------------------------------
    Unable to find libfreerdp-core / libfreerdp
@@ -1036,13 +1042,14 @@ then
     AC_CHECK_LIB([ssh2], [gcry_control],
                          [AC_CHECK_HEADER(gcrypt.h,
                                           [AC_DEFINE([LIBSSH2_USES_GCRYPT],,
-                                                     [Whether libssh2 was built against libgcrypt])],
+                                                     [Whether libssh2 was built against libgcrypt])
+			                  SSH_LIBS="$SSH_LIBS -lgcrypt"],
                                           [AC_MSG_WARN([
   --------------------------------------------
    libssh2 appears to be built against libgcrypt, but the libgcrypt headers
    could not be found. SSH will be disabled.
   --------------------------------------------])
-                                           have_libssh2=no])])
+                                           have_libssh2=no])], [], [-lgcrypt])
 
 fi
 
