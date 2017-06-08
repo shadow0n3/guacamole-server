@@ -38,6 +38,7 @@ AC_CHECK_HEADERS([fcntl.h stdlib.h string.h sys/socket.h time.h sys/time.h syslo
 
 # Source characteristics
 AC_DEFINE([_XOPEN_SOURCE], [700], [Uses X/Open and POSIX APIs])
+AC_SYS_LARGEFILE
 
 # Check for whether math library is required
 AC_CHECK_LIB([m], [cos],
