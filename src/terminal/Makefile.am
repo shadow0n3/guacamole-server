@@ -46,19 +46,17 @@ libguac_terminal_la_SOURCES =   \
     typescript.c
 
 libguac_terminal_la_CFLAGS = \
-    -Werror -Wall            \
+    -Wall            \
     @COMMON_INCLUDE@         \
     @LIBGUAC_INCLUDE@        \
     @PANGO_CFLAGS@           \
     @PANGOCAIRO_CFLAGS@
 
 libguac_terminal_la_LIBADD = \
-    @LIBGUAC_LTLIB@
-
-libguac_terminal_la_LDFLAGS = \
-    @CAIRO_LIBS@              \
-    @MATH_LIBS@               \
-    @PANGO_LIBS@              \
-    @PANGOCAIRO_LIBS@         \
+    @LIBGUAC_LTLIB@          \
+    @CAIRO_LIBS@             \
+    @MATH_LIBS@              \
+    @PANGO_LIBS@             \
+    @PANGOCAIRO_LIBS@        \
     @PTHREAD_LIBS@
 
