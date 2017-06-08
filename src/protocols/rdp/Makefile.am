@@ -138,46 +138,47 @@ endif
 #
 
 libguac_client_rdp_la_CFLAGS = \
-    -Werror -Wall -Iinclude    \
+    -Wall -Iinclude    \
     @COMMON_INCLUDE@           \
     @COMMON_SSH_INCLUDE@       \
     @LIBGUAC_INCLUDE@
 
 libguac_client_rdp_la_LDFLAGS = \
-    -version-info 0:0:0         \
-    @CAIRO_LIBS@                \
-    @PTHREAD_LIBS@              \
-    @RDP_LIBS@
+    -version-info 0:0:0
 
 libguac_client_rdp_la_LIBADD =     \
-    @COMMON_LTLIB@                 \
-    @LIBGUAC_LTLIB@
+    @COMMON_LTLIB@             \
+    @LIBGUAC_LTLIB@            \
+    @CAIRO_LIBS@               \
+    @PTHREAD_LIBS@             \
+    @RDP_LIBS@
 
 #
 # RDPDR
 #
 
 guacdr_cflags                = \
-    -Werror -Wall -Iinclude    \
+    -Wall -Iinclude    \
     @COMMON_INCLUDE@           \
     @COMMON_SSH_INCLUDE@       \
     @LIBGUAC_INCLUDE@
 
 guacdr_ldflags =                   \
-    -module -avoid-version -shared \
-    @PTHREAD_LIBS@                 \
-    @RDP_LIBS@
+    -module -avoid-version -shared
 
 guacdr_libadd =     \
     @COMMON_LTLIB@  \
-    @LIBGUAC_LTLIB@
+    @LIBGUAC_LTLIB@ \
+    @PTHREAD_LIBS@  \
+    @RDP_LIBS@      \
+    libguac-client-rdp.la
 
 #
 # Audio Input
 #
 
 guacai_cflags               =  \
-    -Werror -Wall -Iinclude    \
+    -Wall -Iinclude    \
     @COMMON_INCLUDE@           \
     @COMMON_SSH_INCLUDE@       \
     @LIBGUAC_INCLUDE@
@@ -196,38 +197,41 @@ guacai_libadd =     \
 #
 
 guacsnd_cflags               = \
-    -Werror -Wall -Iinclude    \
+    -Wall -Iinclude    \
     @COMMON_INCLUDE@           \
     @COMMON_SSH_INCLUDE@       \
     @LIBGUAC_INCLUDE@
 
 guacsnd_ldflags =                  \
-    -module -avoid-version -shared \
-    @PTHREAD_LIBS@                 \
-    @RDP_LIBS@
+    -module -avoid-version -shared
 
 guacsnd_libadd =    \
     @COMMON_LTLIB@  \
-    @LIBGUAC_LTLIB@
+    @LIBGUAC_LTLIB@ \
+    @PTHREAD_LIBS@  \
+    @RDP_LIBS@      \
+    libguac-client-rdp.la
 
 #
 # Static Virtual Channels
 #
 
 guacsvc_cflags               = \
-    -Werror -Wall -Iinclude    \
+    -Wall -Iinclude    \
     @COMMON_INCLUDE@           \
     @COMMON_SSH_INCLUDE@       \
     @LIBGUAC_INCLUDE@
 
 guacsvc_ldflags =                  \
-    -module -avoid-version -shared \
-    @PTHREAD_LIBS@                 \
-    @RDP_LIBS@
+    -module -avoid-version -shared
+
 
 guacsvc_libadd =    \
     @COMMON_LTLIB@  \
-    @LIBGUAC_LTLIB@
+    @LIBGUAC_LTLIB@ \
+    @PTHREAD_LIBS@  \
+    @RDP_LIBS@      \
+    libguac-client-rdp.la
 
 #
 # Optional SFTP support
