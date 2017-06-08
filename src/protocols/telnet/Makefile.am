@@ -39,17 +39,16 @@ noinst_HEADERS = \
     user.h
 
 libguac_client_telnet_la_CFLAGS = \
-    -Werror -Wall -Iinclude       \
+    -Wall -Iinclude       \
     @LIBGUAC_INCLUDE@             \
     @TERMINAL_INCLUDE@
 
 libguac_client_telnet_la_LIBADD = \
     @COMMON_LTLIB@                \
     @LIBGUAC_LTLIB@               \
-    @TERMINAL_LTLIB@
-
-libguac_client_telnet_la_LDFLAGS = \
-    -version-info 0:0:0            \
-    @PTHREAD_LIBS@                 \
+    @TERMINAL_LTLIB@              \
+    @PTHREAD_LIBS@                \
     @TELNET_LIBS@
 
+libguac_client_telnet_la_LDFLAGS = \
+    -version-info 0:0:0
